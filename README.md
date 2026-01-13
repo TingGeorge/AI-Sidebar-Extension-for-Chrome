@@ -56,7 +56,3 @@ You can also right-click on any text on a webpage to access AI features directly
 
 -   **Local Storage**: Your API key and chat history are stored locally in your browser via `chrome.storage.local`.
 -   **Direct Communication**: The extension communicates directly with Mistral AI's API. No intermediate servers are used.
-
-## 📄 License
-
-[MIT](LICENSE)

@@ -1,4 +1,4 @@
-# PIXTRAL - AI Sidebar Extension
+# AI Sidebar Extension
 
 An intelligent Chrome extension that brings the power of Mistral AI directly to your browser sidebar. Chat with AI, summarize webpages, explain complex text, and analyze images without leaving your current tab.
 

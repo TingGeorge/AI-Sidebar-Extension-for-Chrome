@@ -1,0 +1,45 @@
+{
+  "manifest_version": 3,
+  "name": "AI Sidebar",
+  "version": "1.0.0",
+  "description": "AI-powered sidebar assistant powered by Mistral - Get instant summaries, explanations, and chat with AI about any webpage",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "sidePanel",
+    "contextMenus"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "side_panel": {
+    "default_path": "sidebar.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": []
+    }
+  ],
+  "action": {
+    "default_title": "Open AI Sidebar",
+    "default_icon": {
+      "16": "icon16.png",
+      "32": "icon32.png",
+      "48": "icon48.png",
+      "64": "icon64.png",
+      "128": "icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icon16.png",
+    "32": "icon32.png",
+    "48": "icon48.png",
+    "64": "icon64.png",
+    "128": "icon128.png"
+  }
+}

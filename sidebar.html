@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Sidebar</title>
+  <link rel="stylesheet" href="sidebar.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="sidebar-container">
+    <!-- Header -->
+    <header class="sidebar-header">
+      <div class="header-left">
+        <div class="logo">
+          <img src="icon48.png" alt="AI Sidebar Logo" width="24" height="24" style="border-radius: 50%;">
+        </div>
+        <span class="header-title">AI Sidebar</span>
+      </div>
+      <div class="header-actions">
+        <button class="icon-btn" id="newChatBtn" title="New Chat">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 5v14M5 12h14"/>
+          </svg>
+        </button>
+        <button class="icon-btn" id="settingsBtn" title="Settings">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Quick Actions -->
+    <div class="quick-actions">
+      <button class="action-chip" id="summarizeBtn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+          <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/>
+        </svg>
+        Summarize
+      </button>
+      <button class="action-chip" id="explainBtn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/>
+        </svg>
+        Explain
+      </button>
+      <button class="action-chip" id="translateBtn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M5 8l6 6M4 14l6-6 2-3M2 5h12M7 2h1M22 22l-5-10-5 10M14 18h6"/>
+        </svg>
+        Translate
+      </button>
+    </div>
+
+    <!-- Chat Container -->
+    <div class="chat-container" id="chatContainer">
+      <!-- Welcome Message -->
+      <div class="welcome-message" id="welcomeMessage">
+        <div class="welcome-icon">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+            <defs>
+              <linearGradient id="welcomeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#6366f1"/>
+                <stop offset="100%" style="stop-color:#8b5cf6"/>
+              </linearGradient>
+            </defs>
+            <circle cx="12" cy="12" r="10" fill="url(#welcomeGradient)" opacity="0.15"/>
+            <circle cx="12" cy="12" r="6" fill="url(#welcomeGradient)" opacity="0.3"/>
+            <circle cx="12" cy="12" r="3" fill="url(#welcomeGradient)"/>
+          </svg>
+        </div>
+        <h2>Hello! I'm your AI assistant</h2>
+        <p>Ask me anything about this page, or use the quick actions above to get started.</p>
+      </div>
+
+      <!-- Messages will be inserted here -->
+      <div class="messages" id="messages"></div>
+    </div>
+
+    <!-- Input Area -->
+    <div class="input-area">
+      <!-- Image Preview (supports up to 3 images) -->
+      <div class="image-preview-container" id="imagePreviewContainer" style="display: none;">
+        <div class="image-previews" id="imagePreviews">
+          <!-- Image previews will be dynamically inserted here -->
+        </div>
+      </div>
+      <div class="input-wrapper">
+        <div class="input-actions">
+          <button class="input-action-btn" id="uploadImageBtn" title="Upload images (max 3)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+              <circle cx="8.5" cy="8.5" r="1.5"/>
+              <polyline points="21 15 16 10 5 21"/>
+            </svg>
+          </button>
+          <input type="file" id="imageInput" accept="image/*" multiple style="display: none;">
+        </div>
+        <textarea 
+          id="messageInput" 
+          placeholder="Ask me anything..."
+          rows="1"
+        ></textarea>
+        <button class="send-btn" id="sendBtn" disabled>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+          </svg>
+        </button>
+      </div>
+      <p class="input-hint">Powered by Mistral AI • Upload up to 3 images</p>
+    </div>
+
+    <!-- Settings Panel -->
+    <div class="settings-panel" id="settingsPanel">
+      <div class="settings-header">
+        <h3>Settings</h3>
+        <button class="icon-btn" id="closeSettingsBtn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 6L6 18M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+      <div class="settings-content">
+        <div class="setting-group">
+          <label for="apiKeyInput">Mistral API Key</label>
+          <input type="password" id="apiKeyInput" placeholder="Enter your API key">
+          <p class="setting-hint">Get your API key from <a href="https://console.mistral.ai/" target="_blank">console.mistral.ai</a></p>
+        </div>
+        <div class="setting-group">
+          <label for="modelSelect">Model</label>
+          <select id="modelSelect">
+            <option value="pixtral-large-latest" selected>Pixtral Large</option>
+            <option value="mistral-large-latest">Mistral Large</option>
+            <option value="mistral-medium-latest">Mistral Medium</option>
+            <option value="mistral-small-latest">Mistral Small</option>
+          </select>
+          <p class="setting-hint">Pixtral models support image analysis</p>
+        </div>
+        <button class="save-btn" id="saveSettingsBtn">Save Settings</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="sidebar.js"></script>
+</body>
+</html>
